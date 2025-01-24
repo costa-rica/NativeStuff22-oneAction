@@ -22,10 +22,10 @@ export default function Test04({ navigation }) {
 
   const defaultColors = {
     center: "rgba(150, 150, 150, .1)", // Neutral gray
-    top: "rgba(170, 170, 170, 0.5)", // Slightly lighter gray
-    right: "rgba(130, 130, 130, 0.5)", // Slightly darker gray
-    bottom: "rgba(180, 180, 180, 0.5)", // Light gray
-    left: "rgba(120, 120, 120, 0.5)", // Darker gray
+    top: "rgba(100, 125, 150, 0.5)", //
+    right: "rgba(125, 150, 100, 0.5)", //
+    bottom: "rgba(150, 100, 125, 0.5)", //
+    left: "rgba(125, 100, 150, 0.5)", //
   };
   const [swipeColorDict, setSwipeColorDict] = useState(defaultColors);
 
@@ -49,11 +49,11 @@ export default function Test04({ navigation }) {
   const handleSwipeColorChange = (direction) => {
     setSwipeColorDict(defaultColors);
     const brightColors = {
-      center: "rgba(255, 255, 255, .7)", // Tomato red
-      top: "rgba(30, 144, 255, 0.9)", // Dodger blue
+      center: "rgba(255, 255, 255, 1)", // Tomato red
+      top: "rgba(175, 200, 255, 1)", // Dodger blue
       right: "rgba(50, 205, 50, 0.9)", // Lime green
       bottom: "rgba(255, 165, 0, 0.9)", // Orange
-      left: "rgba(128, 0, 128, 0.9)", // Purple
+      left: "rgba(200, 175, 255, 0.9)", // Purple
     };
 
     // if (direction.includes("outer") || direction == "center") {
@@ -133,10 +133,27 @@ export default function Test04({ navigation }) {
       setCurrentActionType(null);
     } else {
       if (
+        relativeToPadCenterY < 0 &&
+        Math.abs(relativeToPadCenterX) < Math.abs(relativeToPadCenterY)
+      ) {
+        handleSwipeColorChange("top");
+        setCurrentActionType("top");
+      } else if (
+        relativeToPadCenterX > 0 &&
+        Math.abs(relativeToPadCenterX) > Math.abs(relativeToPadCenterY)
+      ) {
+        handleSwipeColorChange("right");
+        setCurrentActionType("right");
+      } else if (
+        relativeToPadCenterY > 0 &&
+        Math.abs(relativeToPadCenterX) < Math.abs(relativeToPadCenterY)
+      ) {
+        handleSwipeColorChange("bottom");
+        setCurrentActionType("bottom");
+      } else if (
         relativeToPadCenterX < 0 &&
         Math.abs(relativeToPadCenterX) > Math.abs(relativeToPadCenterY)
       ) {
-        // console.log(`swipePosX: ${swipePosX}, swipePosY: ${swipePosY} `);
         handleSwipeColorChange("left");
         setCurrentActionType("left");
       } else {

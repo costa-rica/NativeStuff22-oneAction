@@ -31,6 +31,7 @@ First prototype with touch /hold one action.
 - SwipePadFourOptions
   - picks up from Test03.js and SwipePad01.js
   - adds two more sectors in SwipePad
+    - no more squres in this case all "triangles" (aka rotated rectangles)
 
 ## Installations
 

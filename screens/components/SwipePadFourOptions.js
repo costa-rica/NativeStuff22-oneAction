@@ -21,17 +21,31 @@ export default function SwipePadFourOptions(props) {
   const styleTopTriangle = {
     position: "absolute",
     top: -(props.circleRadiusMiddle * (Math.sqrt(2) - 1)) / 2,
-    // left: props.circleRadiusMiddle - innerCircleRadius,
+    left: props.circleRadiusMiddle / 2,
     transform: [{ rotate: "-45deg" }],
     backgroundColor: props.swipeColorDict["top"],
   };
+  const styleRightTriangle = {
+    position: "absolute",
+    top: props.circleRadiusMiddle / 2,
 
+    right: -(props.circleRadiusMiddle * (Math.sqrt(2) - 1)) / 2, // <--- Key Algo: This places the corner of a rotated in the middle of the parent square.
+    backgroundColor: props.swipeColorDict["right"],
+    transform: [{ rotate: "45deg" }],
+  };
+  const styleBottomTriangle = {
+    position: "absolute",
+    top:
+      props.circleRadiusMiddle +
+      (props.circleRadiusMiddle * (Math.sqrt(2) - 1)) / 2,
+    left: props.circleRadiusMiddle / 2,
+    transform: [{ rotate: "-45deg" }],
+    backgroundColor: props.swipeColorDict["bottom"],
+  };
   const styleLeftTriangle = {
     position: "absolute",
-    // top: props.circleRadiusMiddle - props.circleRadiusInner,
+    top: props.circleRadiusMiddle / 2,
     left: -(props.circleRadiusMiddle * (Math.sqrt(2) - 1)) / 2, // <--- Key Algo: This places the corner of a rotated in the middle of the parent square.
-    top: props.circleRadiusMiddle * 0.5,
-    // left:props.circleRadiusMiddle * 0.5,
     backgroundColor: props.swipeColorDict["left"],
     transform: [{ rotate: "45deg" }],
     zIndex: 1,
@@ -49,23 +63,27 @@ export default function SwipePadFourOptions(props) {
           fill={"transparent"}
         />
       </Svg>
-      {/* <View
-        style={{
-          position: "absolute",
-          backgroundColor: props.swipeColorDict["top"],
-          width: props.circleRadiusMiddle * 2,
-          height: props.circleRadiusMiddle,
-        }}
-      /> */}
-      {/* <View
-        style={{
-          position: "absolute",
-          top: props.circleRadiusMiddle,
-          backgroundColor: props.swipeColorDict["bottom"],
-          width: props.circleRadiusMiddle * 2,
-          height: props.circleRadiusMiddle,
-        }}
-      /> */}
+
+      <Svg
+        height={`${props.circleRadiusMiddle}`}
+        width={`${props.circleRadiusMiddle}`}
+        style={styleRightTriangle}
+      >
+        <Polygon
+          points={`0,0 0,${props.circleRadiusMiddle} ${props.circleRadiusMiddle},${props.circleRadiusMiddle}`}
+          fill={"transparent"}
+        />
+      </Svg>
+      <Svg
+        height={`${props.circleRadiusMiddle}`}
+        width={`${props.circleRadiusMiddle}`}
+        style={styleBottomTriangle}
+      >
+        <Polygon
+          points={`0,0 0,${props.circleRadiusMiddle} ${props.circleRadiusMiddle},${props.circleRadiusMiddle}`}
+          fill={"transparent"}
+        />
+      </Svg>
       <Svg
         height={`${props.circleRadiusMiddle}`}
         width={`${props.circleRadiusMiddle}`}
@@ -73,7 +91,6 @@ export default function SwipePadFourOptions(props) {
       >
         <Polygon
           points={`0,0 0,${props.circleRadiusMiddle} ${props.circleRadiusMiddle},${props.circleRadiusMiddle}`}
-          // fill={props.swipeColorDict["left"]}
           fill={"transparent"}
         />
       </Svg>
@@ -92,6 +109,25 @@ export default function SwipePadFourOptions(props) {
           fill={props.swipeColorDict["center"]}
         />
       </Svg>
+
+      {/* ---- OBE - Rectangles ---- */}
+      {/* <View
+        style={{
+          position: "absolute",
+          backgroundColor: props.swipeColorDict["top"],
+          width: props.circleRadiusMiddle * 2,
+          height: props.circleRadiusMiddle,
+        }}
+      /> */}
+      {/* <View
+        style={{
+          position: "absolute",
+          top: props.circleRadiusMiddle,
+          backgroundColor: props.swipeColorDict["bottom"],
+          width: props.circleRadiusMiddle * 2,
+          height: props.circleRadiusMiddle,
+        }}
+      /> */}
     </View>
   );
 }
