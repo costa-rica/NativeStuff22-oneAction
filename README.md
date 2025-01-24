@@ -1,16 +1,8 @@
-# React Native Stuff Template
+# React Native Stuff 22 - One Action Swipe Pad
 
 ## Description
 
-React native mobile app testing template. Set up with navigation to access different screens in screens/.
-
-## Environment Variables
-
-- store in: .env.local
-
-```env
-EXPO_PUBLIC_API_URL=http://192.168.1.193:3000
-```
+Create a touch screen that on tap displays a pad that will read swipes as well. All in one action: press (and hold) then swipe.
 
 ## Installations
 
@@ -21,27 +13,10 @@ yarn add @react-navigation/native @react-navigation/native-stack
 npx expo install react-native-screens react-native-safe-area-context
 ```
 
-## Rename project
+### 2. Gesture
 
-To clone: `git clone git@github.com:costa-rica/NativeStuffTemplate.git <optional new folder name>`
+`react-native-gesture-handler`
 
-### 1. app.json
+### 3. svg
 
-```
-{
-  "expo": {
-    "name": "NewAppName",
-    "slug": "new-app-name",
-    ...
-  }
-}
-```
-
-### 2. package.json
-
-```
-{
-  "name": "new-app-name",
-  ...
-}
-```
+`react-native-svg`
