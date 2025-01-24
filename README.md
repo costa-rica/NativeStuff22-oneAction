@@ -51,7 +51,8 @@ First prototype with touch /hold one action.
 
 ### Test07.js
 
-- Swipe
+- SwipePadFourAndEightOptions
+  - picks up from Test06.js and SwipePadFourAndFourOptions.js to create an outer circle with 8 triangles
 
 ## Installations
 
