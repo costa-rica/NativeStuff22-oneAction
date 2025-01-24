@@ -17,9 +17,17 @@ export default function Home({ navigation }) {
       <ScrollView>
         <View style={styles.vwButtons}>
           <BtnHomNav
+            goTo={"Test02"}
+            title={"Test02"}
+            description={
+              "Test01 - swipe pad in sepereate file. Modal - Sh-modal.. who needs modals 💁🏼"
+            }
+            navigation={navigation}
+          />
+          <BtnHomNav
             goTo={"Test01"}
             title={"Test01"}
-            description={"tap with no modal"}
+            description={"tap with no modal - but a pad appears"}
             navigation={navigation}
           />
           <BtnHomNav
@@ -47,5 +55,6 @@ const styles = StyleSheet.create({
   txtTitle: { fontSize: 30 },
   vwButtons: {
     gap: 5,
+    padding: 10,
   },
 });
