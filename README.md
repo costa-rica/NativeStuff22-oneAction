@@ -26,6 +26,12 @@ First prototype with touch /hold one action.
 - add clear actions button
 - if user does not move out of inner circle pad disappears.
 
+### Test04.js
+
+- SwipePadFourOptions
+  - picks up from Test03.js and SwipePad01.js
+  - adds two more sectors in SwipePad
+
 ## Installations
 
 ### 1. Navigation
