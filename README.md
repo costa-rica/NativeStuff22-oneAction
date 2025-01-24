@@ -25,6 +25,7 @@ First prototype with touch /hold one action.
 - register an action if user releases swipe on non inner circle
 - add clear actions button
 - if user does not move out of inner circle pad disappears.
+- tap center make swipe pad disappear was deactivated
 
 ### Test04.js
 
@@ -32,6 +33,7 @@ First prototype with touch /hold one action.
   - picks up from Test03.js and SwipePad01.js
   - adds two more sectors in SwipePad
     - no more squres in this case all "triangles" (aka rotated rectangles)
+- tap center make swipe pad disappear was deactivated
 
 ### Test05.js
 
@@ -39,11 +41,13 @@ First prototype with touch /hold one action.
   - picks up from Test04.js and SwipePadeFourOptions.js to create an outer circle with a single Top "triangle" option
   - this is basic framework and logic for outer circle
   - stopped at 1 outer "triangle" because
+- up to this point tap center make swipe pad disappear was deactivated
 
 ### Test06.js
 
 - SwipePadFourAndFourOptionsVersion02
   - picks up from Test05.js and SwipePadFourAndFourOptions.js to create an outer circle with all 4 triangles
+- `circleRadiusMiddle` and `circleRadiusOuter` properties can be assigned independently from one another.
 
 ## Installations
 

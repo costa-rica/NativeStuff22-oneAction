@@ -7,6 +7,7 @@ import Test02 from "./screens/Test02";
 import Test03 from "./screens/Test03";
 import Test04 from "./screens/Test04";
 import Test05 from "./screens/Test05";
+import Test06 from "./screens/Test06";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -20,6 +21,7 @@ export default function App() {
         <Stack.Screen name="Test03" component={Test03} />
         <Stack.Screen name="Test04" component={Test04} />
         <Stack.Screen name="Test05" component={Test05} />
+        <Stack.Screen name="Test06" component={Test06} />
       </Stack.Navigator>
     </NavigationContainer>
   );

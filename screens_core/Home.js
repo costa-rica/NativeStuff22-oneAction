@@ -17,10 +17,18 @@ export default function Home({ navigation }) {
       <ScrollView>
         <View style={styles.vwButtons}>
           <BtnHomNav
+            goTo={"Test06"}
+            title={"Test06"}
+            description={
+              "Test05 -> SwipePadFourAndFourOptions -> AndFour is for outer circle"
+            }
+            navigation={navigation}
+          />
+          <BtnHomNav
             goTo={"Test05"}
             title={"Test05"}
             description={
-              "Test04 -> SwipePadFourAndFourOptions -> AndFour is for outer circle"
+              "Test04 -> SwipePadFourAndOneOptions -> AndOne is for outer circle"
             }
             navigation={navigation}
           />
