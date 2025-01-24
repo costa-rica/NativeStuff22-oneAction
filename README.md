@@ -45,9 +45,13 @@ First prototype with touch /hold one action.
 
 ### Test06.js
 
-- SwipePadFourAndFourOptionsVersion02
-  - picks up from Test05.js and SwipePadFourAndFourOptions.js to create an outer circle with all 4 triangles
+- SwipePadFourAndFourOptions
+  - picks up from Test05.js and SwipePadFourAndOneOptions.js to create an outer circle with all 4 triangles
 - `circleRadiusMiddle` and `circleRadiusOuter` properties can be assigned independently from one another.
+
+### Test07.js
+
+- Swipe
 
 ## Installations
 
