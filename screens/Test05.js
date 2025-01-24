@@ -7,7 +7,7 @@ import {
 } from "react-native-gesture-handler";
 import ViewTemplate from "../screens_core/components/ViewTemplate";
 import ButtonKv from "../screens_core/components/ButtonKv";
-import SwipePadFourAndFourOptions from "./components/SwipePadFourAndFourOptions";
+import SwipePadFourAndOneOptions from "./components/SwipePadFourAndOneOptions";
 
 export default function Test05({ navigation }) {
   const [padVisible, setPadVisible] = useState(false);
@@ -234,7 +234,7 @@ export default function Test05({ navigation }) {
             <Text style={styles.tapText}>Tap anywhere inside this view</Text>
 
             {padVisible && (
-              <SwipePadFourAndFourOptions
+              <SwipePadFourAndOneOptions
                 circleRadiusInner={circleRadiusInner}
                 circleRadiusMiddle={circleRadiusMiddle}
                 styleVwMainPosition={styleVwMainPosition}

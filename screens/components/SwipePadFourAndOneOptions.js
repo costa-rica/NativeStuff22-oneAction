@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import { Polygon, Svg, Circle } from "react-native-svg";
 
-export default function SwipePadFourAndFourOptions(props) {
+export default function SwipePadFourAndOneOptions(props) {
   // Dynamic Styles
   const styleVwOuter = {
     width: props.circleRadiusOuter * 2,
