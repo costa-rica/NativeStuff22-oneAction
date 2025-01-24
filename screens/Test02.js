@@ -1,20 +1,15 @@
 import { useState } from "react";
-import { View, Modal, Text, StyleSheet, Dimensions } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import {
   GestureHandlerRootView,
   GestureDetector,
   Gesture,
 } from "react-native-gesture-handler";
-// import ViewTemplate from "../screens_core/components/ViewTemplate";
-// import CircleSwipePad03 from "./components/CircleSwipePad03";
 import ViewTemplate from "../screens_core/components/ViewTemplate";
-import ButtonKv from "../screens_core/components/ButtonKv";
-import { Polygon, Svg, Circle } from "react-native-svg";
 import SwipePad01 from "./components/SwipePad01";
 
 export default function Test02({ navigation }) {
   const [padVisible, setPadVisible] = useState(false);
-  // const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
   const [padPositionCenter, setPadPositionCenter] = useState({ x: 0, y: 0 });
   const [actionList, setActionList] = useState([]);
   const [tapDetails, setTapDetails] = useState(null);
@@ -23,52 +18,31 @@ export default function Test02({ navigation }) {
   const circleRadiusMiddle = 70;
   const circleRadiusInner = 25;
 
-  const [swipeColorDict, setSwipeColorDict] = useState({
-    outerTop: "rgba(255,255,0,.4)", //rgb(255,255,0)
-    outerBottom: "rgba(186,85,211,.4)", //rgb(186,85,211)
-    topLeft: "rgba(255,100,100,1)",
-    topRight: "rgba(255,165,0,1)",
-    right: "rgba(70,130,180,1)", //rgb(70,130,180)
-    bottom: "rgba(30,144,255,1)", //rgb(30,144,255)
-    left: "rgba(50,205,50,1)", //rgb(50,205,50)
-  });
-
   const defaultColors = {
-    outerTop: "rgba(255,255,0,.4)", //rgb(255,255,0)
-    outerBottom: "rgba(186,85,211,.4)", //rgb(186,85,211)
-    topLeft: "rgba(255,100,100,1)",
-    topRight: "rgba(255,165,0,1)",
-    right: "rgba(70,130,180,1)", //rgb(70,130,180)
-    bottom: "rgba(30,144,255,1)", //rgb(30,144,255)
-    left: "rgba(50,205,50,1)", //rgb(50,205,50)
+    center: "rgba(150, 150, 150, 0.5)", // Neutral gray
+    top: "rgba(170, 170, 170, 0.5)", // Slightly lighter gray
+    right: "rgba(130, 130, 130, 0.5)", // Slightly darker gray
+    bottom: "rgba(180, 180, 180, 0.5)", // Light gray
+    left: "rgba(120, 120, 120, 0.5)", // Darker gray
   };
+  const [swipeColorDict, setSwipeColorDict] = useState(defaultColors);
 
   // Function to temporarily change color
   const handleSwipeColorChange = (direction) => {
-    console.log(`handleSwipeColorChange: ${direction}`);
-    // if (actionList?.length > 0) {
-    //   setActionList([...actionList, direction]);
-    // } else {
-    //   setActionList([direction]);
-    // }
-    if (direction.includes("outer")) {
-      setSwipeColorDict((prevState) => ({
-        ...prevState,
-        [direction]: "white",
-      }));
-    } else {
-      setSwipeColorDict((prevState) => ({
-        ...prevState,
-        [direction]: "gray",
-      }));
-    }
+    setSwipeColorDict(defaultColors);
+    const brightColors = {
+      center: "white", // Tomato red
+      top: "rgba(30, 144, 255, 0.9)", // Dodger blue
+      right: "rgba(50, 205, 50, 0.9)", // Lime green
+      bottom: "rgba(255, 165, 0, 0.9)", // Orange
+      left: "rgba(128, 0, 128, 0.9)", // Purple
+    };
 
-    // setTimeout(() => {
-    //   setSwipeColorDict((prevState) => ({
-    //     ...prevState,
-    //     [direction]: defaultColors[direction],
-    //   }));
-    // }, 250);
+    // if (direction.includes("outer") || direction == "center") {
+    setSwipeColorDict((prevColors) => ({
+      ...prevColors,
+      [direction]: brightColors[direction],
+    }));
   };
 
   const calculatePadPositionCenter = (x, y) => {
@@ -93,108 +67,53 @@ export default function Test02({ navigation }) {
         padPosCenterY: calculatePadPositionCenter(x, y).y,
       });
       setTapIsActive(false);
+      handleSwipeColorChange("center");
     }
-  });
-  const gestureTapOnEnd = Gesture.Tap().onEnd((event) => {
-    // console.log("onEnd");
-    // console.log(event);
-    // const timestamp = new Date().toISOString();
-    const { x, y, absoluteX, absoluteY } = event;
-    console.log(
-      `[tapOnEnd] x:${calculatePadPositionCenter(x, y).x}, y:${
-        calculatePadPositionCenter(x, y).y
-      }`
-    );
-    setTapIsActive(true);
-    setPadVisible(false);
-    // // setModalPosition({ x: absoluteX, y: absoluteY });
-    // setModalPosition({ x: x - circleRadius, y: y - circleRadius });
-    // setModalVisible(false);
-    // setTapDetails({ timestamp, padPosCenterX: x - 50, padPosCenterY: y - 50 });
-    //     setSwipeColorDict((prevState) => ({
-    //   ...prevState,
-    //   [direction]: defaultColors[direction],
-    // }));
-  });
-
-  const gestureSwipeOnEnd = Gesture.Pan().onEnd((event) => {
-    const { x, y, translationX, translationY, absoluteX, absoluteY } = event;
-    console.log("-- swipe onEnd ---");
-    setTapIsActive(true);
-    setSwipeColorDict(defaultColors);
-    setPadVisible(false);
-    // const swipePosX = calculatePadPositionCenter(x, y).x;
-    // const swipePosY = calculatePadPositionCenter(x, y).y;
-    // console.log(`[onEnd] x:${swipePosX}, y:${swipePosY}`);
-    // console.log("-- new swipe ---");
-    // console.log(`x:${x - 50}, y:${y - 50}`);
-
-    // const distance = Math.sqrt(
-    //   Math.pow(swipePosX - tapDetails.padPosCenterX, 2) +
-    //     Math.pow(swipePosY - tapDetails.padPosCenterY, 2)
-    // );
-
-    // // --- Logic for closing modal ---
-    // if (distance <= circleRadiusInner) {
-    //   console.log("Swipe ended inside the inner circle.");
-    //   setActionList([]);
-    //   setPadVisible(false);
-    //   return;
-    // }
-
-    /// -- include
-    // const swipePosX = calculatePadPositionCenter(x, y).x;
-    // const swipePosY = calculatePadPositionCenter(x, y).y;
-    // // console.log(`[swipeOnChange] x:${swipePosX}, y:${swipePosY}`);
-    // console.log(
-    //   `[swipeOnChange]  y:${swipePosY} vs tapDetails.padPosCenterY:${tapDetails.padPosCenterY}`
-    // );
-
-    // const distance = Math.sqrt(
-    //   Math.pow(swipePosX - tapDetails.padPosCenterX, 2) +
-    //     Math.pow(swipePosY - tapDetails.padPosCenterY, 2)
-    // );
-    // console.log(`distance: ${distance}`);
-
-    // if (distance <= circleRadiusInner) {
-    //   console.log("close");
-    // }
-    // setSwipeColorDict(defaultColors);
   });
 
   const gestureSwipeOnChange = Gesture.Pan().onChange((event) => {
     const { x, y, translationX, translationY, absoluteX, absoluteY } = event;
-    console.log("-- swipe onChange ---");
 
     const swipePosX = calculatePadPositionCenter(x, y).x;
     const swipePosY = calculatePadPositionCenter(x, y).y;
-    // console.log(`[swipeOnChange] x:${swipePosX}, y:${swipePosY}`);
-    // console.log(
-    //   `[swipeOnChange]  y:${swipePosY} vs tapDetails.padPosCenterY:${tapDetails.padPosCenterY}`
-    // );
 
-    // const distance = Math.sqrt(
-    //   Math.pow(swipePosX - tapDetails.padPosCenterX, 2) +
-    //     Math.pow(swipePosY - tapDetails.padPosCenterY, 2)
-    // );
-    // console.log(`distance: ${distance}`);
+    const distanceFromCenter = Math.sqrt(
+      Math.pow(swipePosX - tapDetails.padPosCenterX, 2) +
+        Math.pow(swipePosY - tapDetails.padPosCenterY, 2)
+    );
 
-    // if (distance <= circleRadiusInner) {
-    //   console.log("close");
-    // }
+    const inInnerCircle = distanceFromCenter < circleRadiusInner;
+    const inTopSector = swipePosY < tapDetails.padPosCenterY;
 
-    if (swipePosY < tapDetails.padPosCenterY) {
-      handleSwipeColorChange("topLeft");
+    if (inInnerCircle) {
+      handleSwipeColorChange("center");
+    } else {
+      if (inTopSector) {
+        handleSwipeColorChange("top");
+      } else {
+        handleSwipeColorChange("bottom");
+      }
+    }
+  });
+
+  const gestureSwipeOnEnd = Gesture.Pan().onEnd((event) => {
+    const { x, y, translationX, translationY, absoluteX, absoluteY } = event;
+
+    const swipePosX = calculatePadPositionCenter(x, y).x;
+    const swipePosY = calculatePadPositionCenter(x, y).y;
+
+    const distanceFromCenter = Math.sqrt(
+      Math.pow(swipePosX - tapDetails.padPosCenterX, 2) +
+        Math.pow(swipePosY - tapDetails.padPosCenterY, 2)
+    );
+
+    if (distanceFromCenter < circleRadiusInner) {
+      setPadVisible(false);
+      setTapIsActive(true);
     }
   });
 
   // Combine swipe and tap gestures
-  // const combinedGestures = Gesture.Race(
-  //   // gestureTapBegin,
-  //   // gestureTapOnEnd,
-  //   gestureSwipeOnEnd,
-  //   gestureSwipeOnChange
-  // );
   const combinedGestures = Gesture.Simultaneous(
     gestureTapBegin,
     gestureSwipeOnEnd,

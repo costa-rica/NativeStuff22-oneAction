@@ -30,7 +30,16 @@ export default function SwipePad01(props) {
       <View
         style={{
           position: "absolute",
-          backgroundColor: props.swipeColorDict["topLeft"],
+          backgroundColor: props.swipeColorDict["top"],
+          width: props.circleRadiusMiddle * 2,
+          height: props.circleRadiusMiddle,
+        }}
+      />
+      <View
+        style={{
+          position: "absolute",
+          top: props.circleRadiusMiddle,
+          backgroundColor: props.swipeColorDict["bottom"],
           width: props.circleRadiusMiddle * 2,
           height: props.circleRadiusMiddle,
         }}
@@ -46,7 +55,7 @@ export default function SwipePad01(props) {
           r={props.circleRadiusInner}
           stroke="black"
           strokeWidth="1"
-          fill="rgba(255,255,255,1)"
+          fill={props.swipeColorDict["center"]}
           //   onLayout={(event) => {
           //     console.log(`circle event (inner):`);
           //     console.log(event.nativeEvent.layout);
