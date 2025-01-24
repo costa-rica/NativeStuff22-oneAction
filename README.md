@@ -20,6 +20,12 @@ First prototype with touch /hold one action.
 - if user does not swipe out of inner circle SwipePad disappears.
 - Top and bottom section that illuminate when user swipes into it.
 
+### Test03.js
+
+- register an action if user releases swipe on non inner circle
+- add clear actions button
+- if user does not move out of inner circle pad disappears.
+
 ## Installations
 
 ### 1. Navigation

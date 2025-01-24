@@ -17,10 +17,16 @@ export default function Home({ navigation }) {
       <ScrollView>
         <View style={styles.vwButtons}>
           <BtnHomNav
+            goTo={"Test03"}
+            title={"Test03"}
+            description={"Test02 -> register actions"}
+            navigation={navigation}
+          />
+          <BtnHomNav
             goTo={"Test02"}
             title={"Test02"}
             description={
-              "Test01 - swipe pad in sepereate file. Modal - Sh-modal.. who needs modals 💁🏼"
+              "Test01 -> swipe pad in sepereate file. Modal - Sh-modal.. who needs modals 💁🏼"
             }
             navigation={navigation}
           />
