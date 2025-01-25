@@ -17,6 +17,34 @@ export default function Home({ navigation }) {
       <ScrollView>
         <View style={styles.vwButtons}>
           <BtnHomNav
+            goTo={"Test08"}
+            title={"Test08"}
+            description={
+              "Test07 -> SwipePadFourAndEightOptions -> AndEight is for 8 outer circle options"
+            }
+            navigation={navigation}
+          />
+          <BtnHomNav
+            goTo={"PolygonPoints03"}
+            title={"PolygonPoints03"}
+            description={
+              "PolygonPoints02 - traingles extended beyond the circle"
+            }
+            navigation={navigation}
+          />
+          <BtnHomNav
+            goTo={"PolygonPoints02"}
+            title={"PolygonPoints02"}
+            description={"ChatGPT implementation of 12"}
+            navigation={navigation}
+          />
+          <BtnHomNav
+            goTo={"PolygonPoints"}
+            title={"PolygonPoints"}
+            description={"Understand how the polygon points work"}
+            navigation={navigation}
+          />
+          <BtnHomNav
             goTo={"Test07"}
             title={"Test07"}
             description={

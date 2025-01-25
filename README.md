@@ -54,6 +54,14 @@ First prototype with touch /hold one action.
 - SwipePadFourAndFiveOptions
   - picks up from Test06.js and SwipePadFourAndFiveOptions.js to create an outer circle with 5 "triangles" / options
 
+### PolygonPoints.js
+
+- I created to help understand where the "triangle" points really are in reference to the `<Svg>` box.
+
+### PoloygonPoints03.js
+
+ChatGPT help to create a circle with 12 triangles rotating around the circle.
+
 ## Installations
 
 ### 1. Navigation
